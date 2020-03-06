@@ -20,5 +20,17 @@
   <%= @article.text %>
 </p>
 
+<p> <span>
+  <% if @vote %>
+      <i class="fas fa-heart text-primary"></i>
+      <%= link_to('Unvote', article_vote_path(id: @vote.id, article_id: @article.id), method: :delete)%>
+      <span>(<%= @votes.count%>)</span>
+  <% else %>
+      <i class="far fa-heart text-primary"></i>
+      <%= link_to('Vote', article_votes_path(article_id: @article.id), method: :post) %>
+      <span>(<%= @votes.count%>)</span>
+  <% end %> 
+</span></p>
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
