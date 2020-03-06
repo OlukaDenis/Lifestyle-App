@@ -1,26 +1,38 @@
-<h1>Welcome to Lifestyle</h1>
 
-<div class="featured-article">
-    <% if !@featured.empty? %>
-        <h2> Featured Article </h2>
-        <h1><%= @featured.title %></h1>
-    <% end %>
-</div>
-<hr>
+<div class="hero">
+    <div class="featured-article">
+        <% if !@featured.nil? %>
+            <picture class="featured-image" style="background-image: url()">
+                <%= image_tag @featured.image.url if @featured.image? %>
+            </picture>
+            
+            <div class="featured-info">
+                <h3><%= @featured.title %></h3>
+                <p><%= @featured.text %></p>
 
-<article class="articles">
-<% @categories_by_priority.each do |category| %>
-    <div class="article-item" > 
-    <%= link_to category.name, category %><span>(<%= category.articles.count %>)</span>
-
-    <% category.articles.most_recent.each do |article| %>
-        
-        <p><%= link_to article.title, article_path(article) %></p>
-        
-    <%end%>
+            </div>
+        <% end %>
     </div>
-    <hr>
-<% end %>
 
-</article>
+    <div class="right-feature">
+        <h5> Good morning <%= current_user.name if !current_user.nil? %> </h5>
+    </div>
+</div>
+    <hr>
+
+    <article class="articles">
+    <% @categories_by_priority.each do |category| %>
+        <div class="article-item" > 
+        <%= link_to category.name, category %><span>(<%= category.articles.count %>)</span>
+
+        <% category.articles.most_recent.each do |article| %>
+            
+            <p><%= link_to article.title, article_path(article) %></p>
+            
+        <%end%>
+        </div>
+        <hr>
+    <% end %>
+
+    </article>
 
