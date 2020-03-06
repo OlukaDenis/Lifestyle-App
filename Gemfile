@@ -19,6 +19,9 @@ gem 'popper_js', '~> 1.16.0'
 gem 'rails-ujs', '0.1.0'
 gem 'will_paginate-bootstrap4', '0.2.2'
 
+gem 'mini_magick', '4.9.5'
+gem 'carrierwave'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
@@ -46,6 +49,7 @@ end
 
 group :production do
   gem 'pg', '1.2.2'
+  # gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
