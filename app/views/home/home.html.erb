@@ -1,17 +1,10 @@
 <h1>Welcome to Lifestyle</h1>
 
 <div class="featured-article">
-    <h2> Featured Article </h2>
-        <hr>
-        <p>
-        
-        <% @articles.compact.each do |article| %>
-            <%= article.title%>
-        <% end %>
-        </p>
-        <hr>
-     <h3><%= @featured_article.title %></h3>
-     <p><%= @featured_article.text %></p>  
+    <% if !@featured.empty? %>
+        <h2> Featured Article </h2>
+        <h1><%= @featured.title %></h1>
+    <% end %>
 </div>
 <hr>
 

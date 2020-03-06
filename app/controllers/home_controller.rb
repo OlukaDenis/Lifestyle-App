@@ -6,7 +6,9 @@ class HomeController < ApplicationController
 
     @articles = Article.all.map do |article| 
       article if article.votes.max()
-    end    
+    end 
+    
+    @featured = Article.featured
     
   end
 end

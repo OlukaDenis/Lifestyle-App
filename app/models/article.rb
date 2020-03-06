@@ -6,8 +6,9 @@ class Article < ApplicationRecord
 
   scope :featured_article, -> { order(created_at: :asc).last(1) }
   scope :most_recent, -> { order(created_at: :desc) }
+  scope :featured, -> { order(votes_count: :desc).first }
 
-  def self.featured
-    :votes.count
-  end
+  # def self.featured
+  #   self.maximum(:votes_count).first
+  # end
 end
