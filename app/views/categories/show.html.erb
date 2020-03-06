@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @category.name %>
+  <strong><%= @category.name %> Category</strong>
 </p>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @category.priority %>
-</p>
+<% @category.articles.most_recent.each do |article| %>
+  <div class="articles-list">
+    <h4> <%= article.title %></h4>
+    <p> <%= article.text %></p>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

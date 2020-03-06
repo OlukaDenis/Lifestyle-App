@@ -2,27 +2,24 @@
 
 <h1>Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Priority</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<article class="articles">
+  <% @categories_by_priority.each do |category| %>
+      <div class="article-item" > 
+        <%= link_to category.name, category %><span>(<%= category.articles.count %>)</span>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.priority %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% category.articles.each do |article| %>
+          <ul>
+            <li><%= article.title %> </li>
+          </ul>
+        <%end%>
+      </div>
+      <p> <span> <%= link_to 'Edit', edit_category_path(category) %></span>
+      <span> <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %> </span>
+      </p>
+      <hr>
     <% end %>
-  </tbody>
-</table>
+
+</article>
 
 <br>
 

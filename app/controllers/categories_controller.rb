@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @categories_by_priority = Category.ordered_by_priority.all
   end
 
   # GET /categories/1
