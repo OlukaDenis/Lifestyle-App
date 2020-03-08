@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+  
   end
 
   # GET /categories/new
@@ -60,6 +61,46 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def fashion
+    @fashion = Category.fashion
+    @fashion.each do |category|
+      @category = category
+    end
+    render action: :show
+  end
+
+  def entertainment
+    @entertainment = Category.entertainment
+    @entertainment.each do |category|
+      @category = category
+    end
+    render action: :show
+  end
+
+  def sports
+    @sports = Category.sports
+    @sports.each do |category|
+      @category = category
+    end
+    render action: :show
+  end
+
+  def business
+    @business = Category.business
+    @business.each do |category|
+      @category = category
+    end
+    render action: :show
+  end
+
+  def technology
+    @technology = Category.technology
+    @technology.each do |category|
+      @category = category
+    end
+    render action: :show
   end
 
   private

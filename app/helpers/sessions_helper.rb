@@ -21,7 +21,4 @@ module SessionsHelper
         @current_user = nil
     end
 
-    def vote_or_unvote_btn(article)
-        @vote = Vote.find_by(user: current_user, article: article )
-    end
 end

@@ -1,16 +1,17 @@
-<nav class="container-fluid">
+<nav class="container-fluid fixed-top">
     <%= link_to 'LifeStyle', root_path, class: 'navbar-brand'%>
     
-    <ul class="nav-categories">
+    <ul class="nav-categories" id="nav">
         <li class="list-item"><%= link_to 'Home', root_path%></li>
-        <li class="list-item"><%= link_to 'Fashion', ""%></li>
-        <li class="list-item"><%= link_to 'Entertainment', ""%></li>
-        <li class="list-item"><%= link_to 'Sports', ""%></li>
-        <li class="list-item"><%= link_to 'Business', ""%></li>
+        <li class="list-item"><%= link_to 'Fashion', fashion_path %></li>
+        <li class="list-item"><%= link_to 'Entertainment', entertainment_path%></li>
+        <li class="list-item"><%= link_to 'Sports', sports_path%></li>
+        <li class="list-item"><%= link_to 'Business', business_path%></li>
+        <li class="list-item"><%= link_to 'Technology', technology_path%></li>
     </ul>
     <ul class="nav-right-items">
         <% if logged_in? %>
-            <li class="list-item"><%= link_to 'Create', new_article_path %></li>
+            <li id ="create-item" class="list-item"><i class="far fa-plus-square"></i><%= link_to 'Create', new_article_path %></li>
             <li class="list-item"><%= link_to 'Logout', logout_path, method: 'delete'%></li>
         <% else %>
             <li class="list-item"><%= link_to 'Login', login_path%></li>

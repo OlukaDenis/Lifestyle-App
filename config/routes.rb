@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   
   delete 'logout', to: 'sessions#destroy'
 
+  get 'fashion', to: 'categories#fashion'
+  get 'entertainment', to: 'categories#entertainment'
+  get 'sports', to: 'categories#sports'
+  get 'business', to: 'categories#business'
+  get 'technology', to: 'categories#technology'
+
+
   resources :categories
   resources :users
   resources :articles do

@@ -4,11 +4,10 @@ class Article < ApplicationRecord
   has_many :votes, dependent: :destroy
   mount_uploader :image, PictureUploader
 
-  scope :featured_article, -> { order(created_at: :asc).last(1) }
-  scope :most_recent, -> { order(created_at: :desc) }
+  scope :first_article, -> { order(created_at: :desc).first(1) }
+  scope :most_recent, -> { order(created_at: :desc).first(1) }
+  scope :recent, -> { order(created_at: :desc) }
+  scope :featured_recent, -> { order(created_at: :desc).first(2) }
   scope :featured, -> { order(votes_count: :desc).first }
 
-  # def self.featured
-  #   self.maximum(:votes_count).first
-  # end
 end

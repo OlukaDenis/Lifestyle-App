@@ -10,17 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
 @import "bootstrap";
 @import "font-awesome";
 
-$primary-color:  #e65c00;
+$primary-color:  #fd6704;
 $secondary-color: #505050;
 $yellow-color: #ffcc00;
 $light-red: #ff3333;
+$nav-white: #eee;
 * {
     box-sizing: border-box;
 }
@@ -29,7 +28,16 @@ ul {
     list-style-type: none;
 }
 
+body {
+    // background-color: $secondary-color;
+    .content-container{
+        margin-top: 70px;
+    }
+}
+
 /*---------------Navbar-----------*/
+
+
 
 nav{
     display: flex;
@@ -38,6 +46,7 @@ nav{
     font-size: 1rem;
     text-transform: uppercase;
     border-bottom: 1px solid $light-red;
+    background-color: $nav-white;
 
     a{
         color: $secondary-color;
@@ -50,13 +59,33 @@ nav{
         width: 75%;
     }
 
+    #nav {
+        .active {
+            a {
+                color: $primary-color;
+            }
+        }
+    }
+
     ul{
         padding: 8px;
         display: inline-flex;
         justify-content: center;
-
+        
+        #create-item {
+            cursor: pointer;           
+            &:hover {
+                a, svg{
+                    color: $primary-color;
+                } 
+            }
+        }
         li {
             margin-right: 12px;
+            svg {
+                color: $secondary-color;
+                margin-right: 6px;
+            }
             a{
                 font-weight: 700;
                 &:hover{
@@ -64,6 +93,7 @@ nav{
                     text-decoration: none;
                 }
             }
+
         }
     }
 
@@ -77,15 +107,15 @@ nav{
 
     .featured-article{
         position: relative;
-        width: 80%;
-        
-        .featured-image{
-            img{
+        width: 70%;
+
+        .gradient {
+            position: absolute;
             height: 100%;
             width: 100%;
-            }
+            background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));
         }
-
+       
         .featured-info {
             position: absolute;
             bottom: 10px;
@@ -99,13 +129,216 @@ nav{
 
             p{
                 color: white;
+                width: 85ch;
                 font-size: 1.2rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
 
     .right-feature{
-        width: 20%;
-        padding: 1rem;
+        width: 30%;
+        height: 500px;
+        padding-left: 2px;
+
+                    /*----------recent articles section-------------*/
+            .recent-articles{
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+                
+
+                .article-item {
+                    position: relative;
+                    height: 250px;
+                    width: 100%;
+                    
+                    .article-grad {
+                        z-index: 1;
+                        bottom: 2px;  
+                        height: 100%;            
+                        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.24), rgba(7, 6, 6, 0.815));
+                    }
+
+                    p{
+                        padding: 0 14px;
+                        position: absolute;
+                        bottom: 0;
+                        font-size: 20px;
+                        a{
+                            color: white;
+                            font-weight: 600;
+                            &:hover {
+                                color: $primary-color;
+                            }
+                        }
+                    }
+                }
+            }
     }
+}
+
+/*---------------------Featured categories---------------*/
+.articles-section {
+    .title {
+        color: $primary-color;
+        padding: 14px 0;
+        font-weight: 900;
+        font-size: 30px;
+    }
+    .articles{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 10px;
+            
+
+            .article-item {
+                position: relative;
+                height: 250px;
+                width: 100%;
+                
+                .article-grad {
+                    z-index: 1;
+                    bottom: 2px;  
+                    height: 100%;            
+                    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.24), rgba(7, 6, 6, 0.815));
+                }
+
+                h5{
+                    position: absolute;
+                    padding: 10px 14px;
+                    font-weight: 700;
+                    top: 2px;
+                    text-transform: capitalize;;
+                    a{
+                        text-decoration: none;
+                        color: white;
+                        border-bottom: 2px solid $yellow-color;
+                        padding-bottom: 6px;
+                    }
+                }
+
+                p{
+                    padding: 0 14px;
+                    position: absolute;
+                    bottom: 0;
+                    a{
+                        color: white;
+                        font-weight: 600;
+                    }
+                }
+            }
+    }
+}
+
+
+
+
+
+
+/*--------banner-------------*/
+.banner {
+    padding: 10px 40px;
+    background-color: $primary-color;
+    color: white;
+}
+
+/*-------------Individual category-------------*/
+.category-section {
+    
+    .articles{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 10px;
+        
+
+        .article-item {
+            position: relative;
+            height: 200px;
+            width: 100%;
+            
+            .article-grad {
+                z-index: 1;
+                bottom: 2px;  
+                height: 100%;            
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.24), rgba(7, 6, 6, 0.815));
+            }
+
+            h5{
+                position: absolute;
+                padding: 10px 14px;
+                font-weight: 700;
+                top: 2px;
+                text-transform: capitalize;;
+                a{
+                    text-decoration: none;
+                    color: white;
+                    border-bottom: 2px solid $yellow-color;
+                    padding-bottom: 6px;
+                }
+            }
+
+            p{
+                padding: 0 14px;
+                position: absolute;
+                bottom: 0;
+                color: rgb(201, 201, 201);
+                font-size: 12px;
+                width: 100%;
+                
+                .author {
+                    text-transform: capitalize;
+                    margin-right: 8px;
+                }
+
+                .posted-time {
+                    float: right;
+                }
+            }
+
+            
+        }
+
+        .article-info{
+            h5{
+                padding: 8px 1px;
+                bottom: 0;
+                a{
+                    font-weight: 800;
+                    color: $secondary-color;
+                }
+            }
+
+            p {
+                text-align: justify;
+                overflow: hidden; 
+                text-overflow: ellipsis; 
+                display: -webkit-box; 
+                // line-height: 16px;  
+                // max-height: 32px;      
+                
+                /* The number of lines to be displayed */ 
+                -webkit-line-clamp: 4;  
+                -webkit-box-orient: vertical; 
+            }
+
+            .article-votes {
+                cursor: pointer;
+                span{
+                    background-color: #fce9dd;
+                    padding: 5px 8px;
+                    border-radius: 20px;
+                }
+                a {
+                    color: $primary-color;
+                    svg {
+                        padding-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+
+
 }

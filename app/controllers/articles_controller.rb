@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @votes = Vote.all
+    # @votes = Vote.all
     @vote = Vote.find_by(user: current_user, article: @article)
   end
 
