@@ -4,7 +4,7 @@
             <div class="gradient"></div>
             
                 <div class="featured-info">
-                    <h3><%= @featured.title %></h3>
+                    <h3><%= link_to @featured.title, article_path(@featured) %></h3>
                     <p><%= @featured.text %></p>
 
                 </div>        

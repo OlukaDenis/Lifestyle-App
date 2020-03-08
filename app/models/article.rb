@@ -9,5 +9,6 @@ class Article < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
   scope :featured_recent, -> { order(created_at: :desc).first(2) }
   scope :featured, -> { order(votes_count: :desc).first }
+  scope :most_popular, -> { order(votes_count: :desc).first(5) }
 
 end

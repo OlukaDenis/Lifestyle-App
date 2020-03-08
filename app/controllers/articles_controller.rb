@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
   def show
     # @votes = Vote.all
     @vote = Vote.find_by(user: current_user, article: @article)
+    @most_popular = Article.most_popular
   end
 
   # GET /articles/new

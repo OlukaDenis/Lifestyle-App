@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+    before_action :logged_in_user
 
     def create
         @vote = current_user.votes.new(article_id: params[:article_id])
