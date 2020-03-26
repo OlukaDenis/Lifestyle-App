@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<article class="articles">
+  <% @categories_by_priority.each do |category| %>
+      <div class="article-item" > 
+        <%= link_to category.name, category %><span>(<%= category.articles.count %>)</span>
+
+        <% category.articles.each do |article| %>
+          <ul>
+            <li><%= article.title %> </li>
+          </ul>
+        <%end%>
+      </div>
+      <p> <span> <%= link_to 'Edit', edit_category_path(category) %></span>
+      <span> <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %> </span>
+      </p>
+      <hr>
+    <% end %>
+
+</article>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

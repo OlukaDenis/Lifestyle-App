@@ -1,0 +1,43 @@
+<div class="banner">
+  <h3> All stories in <%= @category.name %> <i class="fas fa-caret-right"></i> </h3>
+</div>
+
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+
+<section class="category-section">
+    <article class="articles">
+      <% @category.articles.recent.each do |article| %>
+          <div>
+          <a href="<%= article_path(article) %>">    
+            <div class="article-item" style="background-image:url(<%= article.image %>); background-size:cover; background-repeat: no-repeat;">
+                <div class="article-grad"></div>
+                  <h5><%= link_to @category.name, @category %></h5>
+                  <p>
+                    <span class="author">By: <%= article.author.name %> </span>
+                    <span> <i class="fas fa-heart"></i> <%= article.votes.size %> </span>
+                    <span class="posted-time"> <i class="fas fa-clock"></i> <%= article_date(article) %> </span>
+                  <p>
+            </div>
+            <div class="article-info">
+               <h5><%= link_to article.title, article_path(article) %></h5>
+               <p> <%= article.text %> </p>
+               <p class="article-votes"> 
+                <span>
+                <% @vote = Vote.find_by(user: current_user, article: article) %>
+                  <% if @vote %>                     
+                      <a rel="nofollow" data-method="delete" href="<%= article_vote_path(id: @vote.id, article_id: article.id) %>"> <i class="fas fa-heart"></i>Unvote</a>
+                  <% else %>
+                     <a rel="nofollow" data-method="post" href="<%= article_votes_path(article_id: article.id)%>"> <i class="far fa-heart"></i>Vote</a>
+                  <% end %>                 
+                  
+                </span>
+              </p>
+            </div>
+          </div>
+      </a>
+      <%end%>
+    </article>
+</section>
+</div>
